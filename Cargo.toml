@@ -2,6 +2,12 @@
 name = "paperless"
 version = "0.1.0"
 edition = "2021"
+description = "client for the paperless API"
+license = "GPL-3.0-only"
+authors = ["Louis Chauvet <louis.chauvet@free.fr>"]
+keywords = ["api", "paperless"]
+categories = ["api-bindings"]
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
