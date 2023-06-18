@@ -22,6 +22,7 @@ impl Paperless {
     ///
     /// You can create a new instance like this:
     /// ```rust
+    /// use paperless::Paperless;
     /// let paperless = Paperless::new("https://example.com/paperless/api/", "thisIsAToken");
     /// ```
     pub fn new(root: &str, token: &str) -> Self {
@@ -181,7 +182,10 @@ impl Paperless {
     }
 
     pub fn document_size(&self, id: document::Id) -> usize {
-        let request = self.request(Method::HEAD, self.url_api(&format!("/documents/{}/download/", id.to_string())));
+        let request = self.request(
+            Method::HEAD,
+            self.url_api(&format!("/documents/{}/download/", id.to_string())),
+        );
         let r = self.http_client.execute(request).unwrap();
 
         r.headers()
@@ -194,7 +198,10 @@ impl Paperless {
     }
 
     pub fn document_download(&self, id: document::Id) -> Vec<u8> {
-        let request = self.request(Method::GET, self.url_api(&format!("/documents/{}/download/", id.to_string())));
+        let request = self.request(
+            Method::GET,
+            self.url_api(&format!("/documents/{}/download/", id.to_string())),
+        );
         self.http_client
             .execute(request)
             .unwrap()
